@@ -6,7 +6,7 @@ use Dannyguevara1\Zest\Core\ClassComposer;
 
 class ZestManager
 {
-    public function classes($styles = null): ClassComposer
+    public function classBuilder($styles = null): ClassComposer
     {
         $builder = new ClassComposer();
 
