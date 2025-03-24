@@ -5,7 +5,7 @@ namespace Dannyguevara1\Zest\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see ZestManager
+ * @see \Dannyguevara1\Zest\ZestManager
  */
 class Zest extends Facade
 {
