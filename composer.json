@@ -1,6 +1,5 @@
 {
     "name": "dannyguevara1/zest",
-    "version": "1.0.2",
     "description": "Laravel component toolkit for rapid UI development",
     "keywords": ["laravel", "components", "blade", "ui"],
     "type": "library",
