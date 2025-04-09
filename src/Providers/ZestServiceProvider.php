@@ -54,14 +54,29 @@ class ZestServiceProvider extends ServiceProvider
 
         // Directiva @preset: aplica un preset global
         Blade::directive($prefix, function ($expression) {
+            // Si la expresión está completamente vacía o solo contiene espacios
+            if (empty(trim($expression))) {
+                return "<?php throw new \\InvalidArgumentException('La directiva @preset requiere un nombre de preset como argumento'); ?>";
+            }
             return "<?php echo \Dannyguevara1\Zest\Facades\Zest::preset($expression); ?>";
         });
 
         // Directiva @presetIf: aplica un preset global condicionalmente
         Blade::directive($prefix.'If', function ($expression) {
             $parts = explode(',', $expression, 2);
+
+            // Verificar que tenemos dos partes
+            if (count($parts) < 2) {
+                return "<?php throw new \\InvalidArgumentException('La directiva @presetIf requiere una condición y un nombre de preset'); ?>";
+            }
+
             $condition = trim($parts[0]);
-            $preset = trim($parts[1] ?? 'null');
+            $preset = trim($parts[1]);
+
+            // Verificar que el nombre del preset no está vacío
+            if (empty($preset)) {
+                return "<?php if($condition): throw new \\InvalidArgumentException('El nombre de preset en @presetIf no puede estar vacío'); endif; ?>";
+            }
 
             return "<?php if($condition): echo \Dannyguevara1\Zest\Facades\Zest::preset($preset); endif; ?>";
         });
