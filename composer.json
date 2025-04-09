@@ -1,6 +1,6 @@
 {
     "name": "dannyguevara1/zest",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Laravel component toolkit for rapid UI development",
     "keywords": ["laravel", "components", "blade", "ui"],
     "type": "library",
@@ -8,7 +8,10 @@
     "autoload": {
         "psr-4": {
             "Dannyguevara1\\Zest\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {
